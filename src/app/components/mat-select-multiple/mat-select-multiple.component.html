@@ -1,0 +1,29 @@
+<mat-form-field appearance="outline" [formGroup]="form">
+  <mat-label>Choose fruits</mat-label>
+
+  <!-- Bind to the directive and capture its API via #buf -->
+  <mat-select
+    formControlName="fruitsControl"
+    multiple
+    [bufferedSelect]="true"
+    #buf="bufferedSelect"
+    panelClass="with-actions-panel"
+    disableRipple
+  >
+    <mat-option *ngFor="let f of fruits" [value]="f">
+      {{ f }}
+    </mat-option>
+
+    <!-- Project your footer and bind apply/cancel to directive methods -->
+    <ng-template bufferedFooter let-apply="apply" let-cancel="cancel">
+      <div class="actions-row">
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="apply()">
+          Apply
+        </button>
+      </div>
+    </ng-template>
+  </mat-select>
+</mat-form-field>
+
+<p>Committed: {{ form.get('fruitsControl')?.value | json }}</p>

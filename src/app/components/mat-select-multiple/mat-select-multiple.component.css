@@ -1,0 +1,35 @@
+###
+  Styles
+  (global or component SCSS)
+  ```scss
+  .with-actions-panel
+  .actions-row
+  .mat-pseudo-checkbox {
+  display: none !important;
+}
+.with-actions-panel .actions-row {
+  background: transparent !important;
+}
+.actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px;
+}
+```
+  (global or component SCSS)
+  ```scss
+  .with-actions-panel
+  .actions-row
+  .mat-pseudo-checkbox {
+  display: none !important;
+}
+.with-actions-panel .actions-row {
+  background: transparent !important;
+}
+.actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px;
+}

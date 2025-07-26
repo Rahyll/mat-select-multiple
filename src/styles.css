@@ -1,0 +1,14 @@
+/* Add application styles & imports to this file! */
+/* https://stackoverflow.com/questions/44230852/angular-material-could-not-find-angular-material-core-theme */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 30px;
+}
+
+html,
+body {
+  height: 100%;
+}

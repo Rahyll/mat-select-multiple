@@ -1,0 +1,25 @@
+/* hide the checkbox bubble */
+::ng-deep .with-actions-panel .actions-row .mat-pseudo-checkbox {
+  display: none !important;
+}
+
+/* remove all hover/active backgrounds */
+::ng-deep .with-actions-panel .actions-row {
+  background: transparent !important;
+}
+
+/* ensure no ripples */
+::ng-deep .with-actions-panel .actions-row .mat-ripple-element {
+  display: none !important;
+}
+
+/* keep full opacity */
+::ng-deep .with-actions-panel .actions-row .mat-option-wrapper {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.actions-row {
+  display: flex;
+  justify-content: end;
+}
