@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatMultiselectComponent } from './components/mat-multiselect/mat-multiselect.component';
 import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,12 +22,11 @@ import {
   ],
   declarations: [
     AppComponent,
-    MatMultiselectComponent,
     MatSelectMultipleComponent,
     BufferedFooterDirective,
     BufferedSelectDirective,
   ],
-  providers: [BufferedFooterDirective, BufferedSelectDirective],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

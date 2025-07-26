@@ -1,35 +1,29 @@
-###
-  Styles
-  (global or component SCSS)
-  ```scss
-  .with-actions-panel
-  .actions-row
-  .mat-pseudo-checkbox {
+.with-actions-panel .actions-row .mat-pseudo-checkbox {
   display: none !important;
 }
+
 .with-actions-panel .actions-row {
   background: transparent !important;
 }
+
 .actions-row {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
   padding: 8px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 8px;
+  background-color: #fafafa;
 }
-```
-  (global or component SCSS)
-  ```scss
-  .with-actions-panel
-  .actions-row
-  .mat-pseudo-checkbox {
-  display: none !important;
+
+/* Ensure buttons are visible */
+.actions-row button {
+  min-width: 60px;
+  height: 32px;
+  font-size: 12px;
 }
-.with-actions-panel .actions-row {
-  background: transparent !important;
-}
-.actions-row {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 8px;
+
+/* Make sure the panel has enough space for the footer */
+.with-actions-panel {
+  max-height: 300px;
 }

@@ -10,7 +10,7 @@ export class MatSelectMultipleComponent implements OnInit {
   fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
 
   form = new FormGroup({
-    fruitsContrl: new FormControl([]),
+    fruitsControl: new FormControl([]),
   });
 
   constructor() {}
