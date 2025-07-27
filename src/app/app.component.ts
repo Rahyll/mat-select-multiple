@@ -1,5 +1,4 @@
-import { Component, VERSION } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',

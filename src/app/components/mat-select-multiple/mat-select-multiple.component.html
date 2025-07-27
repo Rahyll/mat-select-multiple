@@ -1,12 +1,10 @@
 <mat-form-field appearance="outline" [formGroup]="form">
   <mat-label>Choose fruits</mat-label>
 
-  <!-- Bind to the directive and capture its API via #buf -->
   <mat-select
     formControlName="fruitsControl"
     multiple
     [bufferedSelect]="true"
-    #buf="bufferedSelect"
     panelClass="with-actions-panel"
     disableRipple
   >
@@ -14,7 +12,6 @@
       {{ f }}
     </mat-option>
 
-    <!-- Project your footer and bind apply/cancel to directive methods -->
     <ng-template bufferedFooter let-apply="apply" let-cancel="cancel">
       <div class="actions-row">
         <button mat-button (click)="cancel()">Cancel</button>
