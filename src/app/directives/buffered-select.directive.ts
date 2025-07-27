@@ -74,6 +74,9 @@ export class BufferedSelectDirective implements OnInit, AfterViewInit, OnDestroy
       if (opened && this.footerTpl && this.select.panel) {
         this.syncVisualState();
         this.renderFooter();
+      } else if (!opened) {
+        // When panel closes, check if there are unsaved changes and revert if needed
+        this.handlePanelClose();
       }
     });
   }
@@ -96,6 +99,17 @@ export class BufferedSelectDirective implements OnInit, AfterViewInit, OnDestroy
     this.originalValue = [...currentValue];
     this.tempValue = [...currentValue];
     this.dummyControl.setValue(currentValue);
+    
+    // Ensure visual state matches the current value
+    if (this.select.options) {
+      this.select.options.forEach(option => {
+        if (this.originalValue.includes(option.value)) {
+          option.select();
+        } else {
+          option.deselect();
+        }
+      });
+    }
   }
 
   onSelection(event: MatSelectChange) {
@@ -114,6 +128,44 @@ export class BufferedSelectDirective implements OnInit, AfterViewInit, OnDestroy
   cancel() {
     this.tempValue = [...this.originalValue];
     this.dummyControl.setValue(this.originalValue);
+    
+    // Clear the visual selection state by deselecting all options first
+    if (this.select.options) {
+      this.select.options.forEach(option => {
+        option.deselect();
+      });
+      
+      // Then select only the original values
+      this.originalValue.forEach(value => {
+        const option = this.select.options.find(opt => opt.value === value);
+        if (option) {
+          option.select();
+        }
+      });
+    }
+    
     this.select.close();
+  }
+
+  private handlePanelClose() {
+    // Check if there are unsaved changes by comparing tempValue with originalValue
+    const hasChanges = JSON.stringify(this.tempValue) !== JSON.stringify(this.originalValue);
+    
+    if (hasChanges) {
+      // Revert to original state when panel closes with unsaved changes
+      this.tempValue = [...this.originalValue];
+      this.dummyControl.setValue(this.originalValue);
+      
+      // Reset visual state
+      if (this.select.options) {
+        this.select.options.forEach(option => {
+          if (this.originalValue.includes(option.value)) {
+            option.select();
+          } else {
+            option.deselect();
+          }
+        });
+      }
+    }
   }
 }

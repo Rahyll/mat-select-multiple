@@ -16,6 +16,7 @@ export class MatSelectMultipleComponent implements OnInit {
   ngOnInit() {
     this.form.get('fruitsControl')?.valueChanges.subscribe(value => {
       // Handle value changes if needed
+      console.log(value);
     });
   }
 }
