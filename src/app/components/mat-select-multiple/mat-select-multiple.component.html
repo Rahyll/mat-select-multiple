@@ -1,6 +1,4 @@
-<mat-form-field appearance="fill" [formGroup]="form">
-  <mat-label>Choose fruits</mat-label>
-
+<mat-form-field appearance="outline" [formGroup]="form" class="full-width">
   <mat-select
     formControlName="fruitsControl"
     multiple
@@ -8,9 +6,27 @@
     panelClass="with-actions-panel"
     disableRipple
   >
-    <mat-option *ngFor="let f of fruits" [value]="f">
+    <!-- Search input -->
+    <div class="search-container">
+      <mat-form-field appearance="outline" class="search-field">
+        <input 
+          matInput 
+          [formControl]="searchControl"
+          placeholder="Type to search..."
+          autocomplete="off"
+        >
+      </mat-form-field>
+    </div>
+
+    <!-- Filtered options -->
+    <mat-option *ngFor="let f of filteredFruits" [value]="f">
       {{ f }}
     </mat-option>
+
+    <!-- No results message -->
+    <div *ngIf="filteredFruits.length === 0 && searchTerm" class="no-results">
+      No fruits found matching "{{ searchTerm }}"
+    </div>
 
     <ng-template bufferedFooter let-apply="apply" let-cancel="cancel">
       <div class="actions-row">

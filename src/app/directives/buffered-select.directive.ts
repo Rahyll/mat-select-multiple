@@ -74,6 +74,8 @@ export class BufferedSelectDirective implements OnInit, AfterViewInit, OnDestroy
       if (opened && this.footerTpl && this.select.panel) {
         this.syncVisualState();
         this.renderFooter();
+        // Reset search when panel opens
+        setTimeout(() => this.resetSearch(), 0);
       } else if (!opened) {
         // When panel closes, check if there are unsaved changes and revert if needed
         this.handlePanelClose();
@@ -109,6 +111,17 @@ export class BufferedSelectDirective implements OnInit, AfterViewInit, OnDestroy
           option.deselect();
         }
       });
+    }
+  }
+
+  // Method to reset search when panel opens
+  private resetSearch() {
+    // This will be called when the panel opens to ensure clean state
+    const searchInput = this.select.panel?.nativeElement.querySelector('input[matInput]');
+    if (searchInput) {
+      searchInput.value = '';
+      // Trigger the search change event to reset filtered options
+      searchInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
   }
 
