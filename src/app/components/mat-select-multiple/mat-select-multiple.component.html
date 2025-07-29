@@ -6,8 +6,15 @@
     panelClass="with-actions-panel"
     disableRipple
   >
+    <mat-select-trigger>
+      {{form.get('fruitsControl')?.value?.[0] || ''}}
+      <span *ngIf="(form.get('fruitsControl')?.value?.length || 0) > 1" class="example-additional-selection">
+        (+{{(form.get('fruitsControl')?.value?.length || 0) - 1}} {{form.get('fruitsControl')?.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+
     <!-- Search input -->
-    <div class="search-container">
+    <!-- <div class="search-container">
       <mat-form-field appearance="outline" class="search-field">
         <input 
           matInput 
@@ -16,7 +23,7 @@
           autocomplete="off"
         >
       </mat-form-field>
-    </div>
+    </div> -->
 
     <!-- Filtered options -->
     <mat-option *ngFor="let f of filteredFruits" [value]="f">

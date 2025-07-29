@@ -62,3 +62,10 @@
 .full-width {
   width: 100%;
 }
+
+/* Additional selection styles */
+.example-additional-selection {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.875em;
+  margin-left: 4px;
+}
